@@ -5,17 +5,15 @@
 <h1 class="text-center">Página de Selección</h1>
 {% endblock header20_content %} {% block content %}
 <div class="container d-flex justify-content-center flex-column altura-100p">
-  <div class="col-6 mx-auto">
+  <div class="col-12">
     <div
       class="circulo mx-auto d-flex justify-content-center align-items-center"
     >
       <div class=""></div>
     </div>
+    <div class="col-10 mx-auto d-flex justify-content-center">
+      {% include "parciales/ir_listar_sorteos.html" %}
+    </div>
   </div>
-  <a
-    href="{% url 'listado_sorteos' %}"
-    class="btn btn-lg btn-primary mx-auto mt-4 col-10 col-md-4"
-    >Ver los Sorteos
-  </a>
 </div>
 {% endblock %}

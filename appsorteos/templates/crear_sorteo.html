@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block title %} Crear Sorteo {% endblock %}
+<!-- Inicio block header  -->
+{% block header20_content %}
+<h1 class="text-center">Crear Nuevo Sorteo</h1>
+<div class="d-flex justify-content-around">
+  {% include "parciales/ir_seleccion.html" %}
+  <!-- Aquí se incluye un enlace para volver a la página de selección -->
+  {% include "parciales/ir_listar_sorteos.html" %}
+</div>
+{% endblock header20_content %}
+<!-- Este template muestra un formulario para crear un nuevo sorteo. El formulario se implementaría aquí, y se incluirían los campos necesarios para ingresar la información del sorteo, como la fecha, el valor de la papeleta, etc. -->
+{% block content %}
+<!-- Aquí se mostraría el formulario para crear un nuevo sorteo -->
+<div class="d-flex justify-content-center flex-column h-100">
+  <form method="post">
+    {% csrf_token %}
+    <!-- Aquí se incluirían los campos del formulario -->
+    <div class="mb-3">
+      <label for="fecha" class="form-label">Fecha del Sorteo</label>
+      <input
+        type="date"
+        class="form-control"
+        id="fecha"
+        name="fecha"
+        required
+        min="{{fecha_minima|date:'Y-m-d'}}"
+        max="{{fecha_maxima|date:'Y-m-d'}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="valor_papeleta" class="form-label"
+        >Valor de la Papeleta</label
+      >
+      <input
+        type="number"
+        step="0.01"
+        class="form-control"
+        id="valor_papeleta"
+        name="valor_papeleta"
+        min="2.00"
+        max="25.00"
+        placeholder="5,00"
+        required
+      />
+    </div>
+    <div class="d-flex justify-content-around">
+      <button type="submit" class="btn btn-primary col-10 col-md-4">
+        Crear Sorteo
+      </button>
+      <button type="reset" class="btn btn-secondary col-10 col-md-4">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

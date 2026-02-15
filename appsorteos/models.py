@@ -1,10 +1,12 @@
+import datetime
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+
+from appgeneral.models import TimeStampedModel
 
 # Create your models here.
 
 
-class Sorteo(models.Model):
+class Sorteo(TimeStampedModel):
     fecha = models.DateField()
     valor_papeleta = models.DecimalField(
         max_digits=6,

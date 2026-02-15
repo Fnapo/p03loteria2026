@@ -1,33 +1,46 @@
-{% extends "base.html" %} {% block title %} Sorteos {% endblock %}
+{% extends "base.html" %} {% load l10n %}
+<!-- un separador -->
+{% block title %} Sorteos {% endblock %}
 <!-- Inicio block header  -->
 {% block header20_content %}
 <h1 class="text-center">Lista de Sorteos</h1>
-<div class="d-flex justify-content-center">
-  <a href="{% url 'index' %}" class="btn btn-secondary col-10 col-md-4"
-    >Volver a Seleccionar</a
+<div class="d-flex justify-content-around">
+  {% include "parciales/ir_seleccion.html" %}
+  <a href="{% url 'crear_sorteo' %}" class="btn btn-primary col-10 col-md-4"
+    >Crear Nuevo Sorteo</a
   >
 </div>
 {% endblock header20_content %}
 <!-- Este template muestra una lista de sorteos disponibles. Cada sorteo se muestra en una tarjeta con su nombre, descripción y un enlace para ver más detalles. Si no hay sorteos disponibles, se muestra un mensaje informativo. -->
 {% block content %}
 <!-- Aquí se muestra la lista de sorteos -->
-{% for sorteo in sorteos %}
-<div class="card mb-3">
-  <div class="card-body">
-    <h5 class="card-title">{{ sorteo.fecha }}</h5>
-    <p class="card-text">{{ sorteo.valor_papeleta }}</p>
-    <a href="{% url 'detalle_sorteo' sorteo.id %}" class="btn btn-primary"
-      >Ver Detalles</a
+{% if sorteos %}
+<table class="table table-striped sticky-top">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Valor de la Papeleta</th>
+    </tr>
+  </thead>
+  {% for sorteo in sorteos %}
+  <tbody>
+    <tr>
+      <th scope="row">{{ sorteo.id }}</th>
+      <td>{{ sorteo.fecha | date:"d/m/Y" }}</td>
+      <td>
+        {% localize on %}{{ sorteo.valor_papeleta|localize }} €{% endlocalize %}
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %} {% else %}
+  <div class="h-100 d-flex justify-content-center align-items-center">
+    <div
+      class="alert alert-info d-flex justify-content-center w-100"
+      role="alert"
     >
+      <p class="m-0">No hay sorteos disponibles.</p>
+    </div>
   </div>
-</div>
-{% empty %}
-<div class="h-100 d-flex justify-content-center align-items-center">
-  <div
-    class="alert alert-info d-flex justify-content-center w-100"
-    role="alert"
-  >
-    <p class="m-0">No hay sorteos disponibles.</p>
-  </div>
-</div>
-{% endfor %} {% endblock %}
+  {% endif %} {% endblock %}
+</table>
