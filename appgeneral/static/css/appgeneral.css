@@ -76,8 +76,16 @@ Estilos personalizados para miweb
 */
 
 /* Estilo para el header */
-.header20 {
-  font-family: 'MiGotica', Georgia, 'Times New Roman', Times, serif;
+
+header h1,
+header h2,
+header h3 {
+  font-family: 'MiGotica', cursive;
+}
+
+header {
+  font-family: 'Georgia, ' Times New Roman', Times, serif;
+
 }
 
 

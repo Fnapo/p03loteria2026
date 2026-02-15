@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %} Sorteos {% endblock %}
+<!-- Inicio block header  -->
+{% block header20_content %}
+<h1 class="text-center">Lista de Sorteos</h1>
+<div class="d-flex justify-content-center">
+  <a href="{% url 'index' %}" class="btn btn-secondary col-10 col-md-4"
+    >Volver a Seleccionar</a
+  >
+</div>
+{% endblock header20_content %}
+<!-- Este template muestra una lista de sorteos disponibles. Cada sorteo se muestra en una tarjeta con su nombre, descripción y un enlace para ver más detalles. Si no hay sorteos disponibles, se muestra un mensaje informativo. -->
+{% block content %}
+<!-- Aquí se muestra la lista de sorteos -->
+{% for sorteo in sorteos %}
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">{{ sorteo.fecha }}</h5>
+    <p class="card-text">{{ sorteo.valor_papeleta }}</p>
+    <a href="{% url 'detalle_sorteo' sorteo.id %}" class="btn btn-primary"
+      >Ver Detalles</a
+    >
+  </div>
+</div>
+{% empty %}
+<div class="h-100 d-flex justify-content-center align-items-center">
+  <div
+    class="alert alert-info d-flex justify-content-center w-100"
+    role="alert"
+  >
+    <p class="m-0">No hay sorteos disponibles.</p>
+  </div>
+</div>
+{% endfor %} {% endblock %}
