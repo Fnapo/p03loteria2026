@@ -76,9 +76,17 @@ WSGI_APPLICATION = "loteria26.wsgi.application"
 
 DATABASES = {
     "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "loteria2026",
+        "USER": "Paco2026",
+        "PASSWORD": "$$Loteria2026Paco&&",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
+    },
+    "otra": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
-    }
+    },
 }
 
 

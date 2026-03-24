@@ -8,6 +8,7 @@ from .models import Sorteo
 
 def listado_sorteos(request):
     sorteos = Sorteo.objects.all()
+
     return render(request, "listar_sorteos.html", {"sorteos": sorteos})
 
 
@@ -18,9 +19,12 @@ def crear_sorteo(request):
         fecha = request.POST.get("fecha")
         valor_papeleta = request.POST.get("valor_papeleta")
         Sorteo.objects.create(fecha=fecha, valor_papeleta=valor_papeleta)
+
         return redirect("listar_sorteos")
+
     fecha_minima = datetime.now() + timedelta(days=7)
     fecha_maxima = datetime.now() + timedelta(days=120)
+
     return render(
         request,
         "crear_sorteo.html",
@@ -28,12 +32,11 @@ def crear_sorteo(request):
     )
 
 
-"""
 def detalles_sorteo(request, sorteo_id):
     try:
         sorteo = Sorteo.objects.get(id=sorteo_id)
     except Sorteo.DoesNotExist:
         # Manejar el caso en que no exista el sorteo
         return render(request, "error_sorteo.html", {"mensaje": "El Sorteo no existe."})
+
     return render(request, "detalles_sorteo.html", {"sorteo": sorteo})
-"""

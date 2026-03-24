@@ -15,25 +15,35 @@
 {% block content %}
 <!-- Aquí se muestra la lista de sorteos -->
 {% if sorteos %}
-<table class="table table-striped sticky-top">
-  <thead>
+<table class="table table-striped">
+  <thead class="sticky-top">
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Fecha</th>
+      <th scope="col">Fecha del Soteo</th>
       <th scope="col">Valor de la Papeleta</th>
+      <th scope="col" class="col-5">Acciones</th>
     </tr>
   </thead>
-  {% for sorteo in sorteos %}
+
   <tbody>
+    {% for sorteo in sorteos %}
     <tr>
       <th scope="row">{{ sorteo.id }}</th>
       <td>{{ sorteo.fecha | date:"d/m/Y" }}</td>
       <td>
         {% localize on %}{{ sorteo.valor_papeleta|localize }} €{% endlocalize %}
       </td>
+      <td>
+        <a
+          class="btn btn-primary col-4"
+          href="{% url 'detalles_sorteo' sorteo_id=sorteo.id %}"
+          >Detalles</a
+        >
+      </td>
     </tr>
+    {% endfor %}
   </tbody>
-  {% endfor %} {% else %}
+  {% else %}
   <div class="h-100 d-flex justify-content-center align-items-center">
     <div
       class="alert alert-info d-flex justify-content-center w-100"
