@@ -1,20 +1,20 @@
 {% extends "base.html" %} {% load l10n %}
 <!-- un separador -->
-{% block title %} Sorteos {% endblock %}
+{% block title %} Socios {% endblock %}
 <!-- Inicio block header  -->
 {% block header20_content %}
-<h1 class="text-center">Lista de Sorteos</h1>
+<h1 class="text-center">Lista de Socios</h1>
 <div class="d-flex justify-content-around">
   {% include "parciales/ir_seleccion.html" %}
-  <a href="{% url 'crear_sorteo' %}" class="btn btn-primary col-10 col-md-4"
-    >Crear Nuevo Sorteo</a
+  <a href="{% url 'inscribir_socio' %}" class="btn btn-primary col-10 col-md-4"
+    >Inscribir Nuevo Socio</a
   >
 </div>
 {% endblock header20_content %}
-<!-- Este template muestra una lista de sorteos disponibles. Cada sorteo se muestra en una tarjeta con su nombre, descripción y un enlace para ver más detalles. Si no hay sorteos disponibles, se muestra un mensaje informativo. -->
+<!-- Este template muestra una lista de socios disponibles. Cada socio se muestra en una tarjeta con su nombre, descripción y un enlace para ver más detalles. Si no hay socios disponibles, se muestra un mensaje informativo. -->
 {% block content %}
-<!-- Aquí se muestra la lista de sorteos -->
-{% if sorteos %}
+<!-- Aquí se muestra la lista de socios -->
+{% if socios %}
 <table class="table table-striped">
   <thead class="sticky-top">
     <tr>
@@ -26,17 +26,17 @@
   </thead>
 
   <tbody>
-    {% for sorteo in sorteos %}
+    {% for socio in socios %}
     <tr>
-      <th scope="row">{{ sorteo.id }}</th>
-      <td>{{ sorteo.fecha | date:"d/m/Y" }}</td>
+      <th scope="row">{{ socio.id }}</th>
+      <td>{{ socio.fecha | date:"d/m/Y" }}</td>
       <td>
-        {% localize on %}{{ sorteo.valor_papeleta|localize }} €{% endlocalize %}
+        {% localize on %}{{ socio.valor_papeleta|localize }} €{% endlocalize %}
       </td>
       <td>
         <a
           class="btn btn-primary col-4"
-          href="{% url 'detalles_sorteo' sorteo_id=sorteo.id %}"
+          href="{% url 'detalles_socio' socio_id=socio.id %}"
           >Detalles</a
         >
       </td>
@@ -50,7 +50,7 @@
     class="alert alert-info d-flex justify-content-center w-100"
     role="alert"
   >
-    <p class="m-0">No hay sorteos disponibles.</p>
+    <p class="m-0">No hay socios inscritos.</p>
   </div>
 </div>
 {% endif %} {% endblock %}

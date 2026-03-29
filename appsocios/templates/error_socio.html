@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %} No Socio {% endblock %}
+<!-- Inicio block header  -->
+{% block header20_content %}
+<h1 class="text-center">Error en los Socios</h1>
+<div class="d-flex justify-content-center">
+  {% include "parciales/ir_listar_socios.html" %}
+</div>
+{% endblock header20_content %}
+<!-- Este template se muestra cuando hay errores en los socios. -->
+{% block content %}
+<div class="h-100 d-flex justify-content-center align-items-center">
+  <div
+    class="alert alert-info d-flex justify-content-center w-100"
+    role="alert"
+  >
+    <p class="m-0">{{ mensaje }}</p>
+  </div>
+</div>
+{% endblock %}
