@@ -1,8 +1,10 @@
-{% extends "base.html" %} {% block title %} Inscribir Socio {% endblock %}
+{% extends "base20.html" %} {% block title %} Inscribir Socio {% endblock %}
 <!-- Inicio block header  -->
 {% block header20_content %}
-<h1 class="text-center">Inscribir Nuevo Socio</h1>
-<div class="d-flex justify-content-around">
+<div class="d-flex altura-15 justify-content-center align-items-center">
+  <h1 class="text-center">Inscribir Nuevo Socio</h1>
+</div>
+<div class="d-flex justify-content-around altura-5 align-items-center">
   {% include "parciales/ir_seleccion.html" %}
   <!-- Aquí se incluye un enlace para volver a la página de selección -->
   {% include "parciales/ir_listar_socios.html" %}
@@ -35,14 +37,7 @@
         required
       />
     </div>
-    <div class="d-flex justify-content-around">
-      <button type="submit" class="btn btn-primary col-10 col-md-4">
-        Inscribir Socio
-      </button>
-      <button type="reset" class="btn btn-secondary col-10 col-md-4">
-        Cancelar
-      </button>
-    </div>
+    {% include "parciales/b_clasica.html" with t_b_nuevo="Inscribir Socio" %}
   </form>
 </div>
 {% endblock %}

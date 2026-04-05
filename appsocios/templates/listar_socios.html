@@ -1,16 +1,19 @@
-{% extends "base.html" %} {% load l10n %}
+{% extends "base20.html" %} {% load l10n %}
 <!-- un separador -->
 {% block title %} Socios {% endblock %}
 <!-- Inicio block header  -->
 {% block header20_content %}
-<h1 class="text-center">Lista de Socios</h1>
-<div class="d-flex justify-content-around">
+<div class="d-flex altura-15 justify-content-center align-items-center">
+  <h1 class="text-center">Lista de Socios</h1>
+</div>
+<div class="d-flex justify-content-around altura-5 align-items-center">
   {% include "parciales/ir_seleccion.html" %}
   <a href="{% url 'inscribir_socio' %}" class="btn btn-primary col-10 col-md-4"
     >Inscribir Nuevo Socio</a
   >
 </div>
 {% endblock header20_content %}
+
 <!-- Este template muestra una lista de socios disponibles. Cada socio se muestra en una tarjeta con su nombre, descripción y un enlace para ver más detalles. Si no hay socios disponibles, se muestra un mensaje informativo. -->
 {% block content %}
 <!-- Aquí se muestra la lista de socios -->
