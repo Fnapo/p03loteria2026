@@ -1,0 +1,5 @@
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">{% include "parciales/opciones_sorteos.html" %}</div>
+  {% include "parciales/b_clasica.html" with t_b_nuevo='Elegir un Sorteo' %}
+</form>

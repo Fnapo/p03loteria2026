@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "appsorteos",
     "appgeneral",
     "appsocios",
+    "appventas",
 ]
 
 MIDDLEWARE = [

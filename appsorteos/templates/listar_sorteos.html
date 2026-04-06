@@ -47,12 +47,5 @@
   </tbody>
 </table>
 {% else %}
-<div class="h-100 d-flex justify-content-center align-items-center">
-  <div
-    class="alert alert-info d-flex justify-content-center w-100"
-    role="alert"
-  >
-    <p class="m-0">No hay sorteos disponibles.</p>
-  </div>
-</div>
+{% include "parciales/mensaje_sorteo.html" with mensaje='No hay sorteos disponibles.' %}
 {% endif %} {% endblock %}

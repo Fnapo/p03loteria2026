@@ -60,7 +60,7 @@
   border-radius: 50%;
   border: calc(var(--spinner-size) / 10) solid rgba(255, 255, 255, 0.5);
   border-top-color: #fff;
-  animation: spin 2s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {

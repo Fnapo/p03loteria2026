@@ -1,0 +1,6 @@
+<selec name="sorteo" id="sorteo" class="form-select" required>
+  <option value="" disabled selected>Selecciona un sorteo</option>
+  {% for sorteo in sorteos %}
+  <option value="{{ sorteo.id }}">{{ sorteo.fecha }}</option>
+  {% endfor %}
+</selec>
